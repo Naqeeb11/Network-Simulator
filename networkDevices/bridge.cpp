@@ -2,7 +2,7 @@
 using namespace std;
 
 class Bridge {
-    long long int macAddress;
+    string macAddress;
     int srcAddress;
     int destAddress;
     public:
