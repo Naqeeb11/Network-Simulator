@@ -15,6 +15,7 @@ class endDevices;
 #include "functionality/framing.cpp"
 #include "functionality/protocolDemonstration.cpp"
 #include "functionality/tableMapping.cpp"
+#include "networkDevices/hub_main.h"
 
 #include "networkDevices/hub.cpp"
 #include "networkTopology/switchHubD.cpp"
