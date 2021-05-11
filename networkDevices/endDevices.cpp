@@ -1,5 +1,6 @@
 class endDevices {
     int deviceNo;
+    int hubno;  //if connected to hub;
     string macAddress;
     map<string,int> messagesReceived;  //store messages and sender info (device no) 
     map<string,int> messagesSent;  //store messages and dest info (device no) 
@@ -19,8 +20,19 @@ class endDevices {
         messagesSent.insert({message, dest});
     }
     
+    void hubConnection(int hub)
+    {
+        hubno=hub;
+    }
+
+    int giveHub()
+    {
+        return hubno;
+    }
+
     void Show()
     {
+        cout<<"\n";
         cout<<"device No: "<<deviceNo<<"\n";
         cout<<"Mac Address: "<<macAddress<<"\n";
         cout<<"Messages Received: \n";
@@ -34,6 +46,7 @@ class endDevices {
     }
 
     friend void tableMapping(int,int,endDevices e[],int,Switch &,string message);
+    friend void tableMappingComplex(int ,int,endDevices e[] ,int ,Switch &,Hub h[],string message);
 };
 
 

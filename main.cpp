@@ -5,7 +5,9 @@ using namespace std;
 #include "protocols/selectiveRepeat.cpp"
 #include "protocols/stopandWait.cpp"
 
+class Hub;
 class Switch;
+class endDevices;
 
 #include "networkDevices/endDevices.cpp"
 #include "networkDevices/switch.cpp"
@@ -14,6 +16,9 @@ class Switch;
 #include "functionality/protocolDemonstration.cpp"
 #include "functionality/tableMapping.cpp"
 
+#include "networkDevices/hub.cpp"
+#include "networkTopology/switchHubD.cpp"
+#include "functionality/tableMappingComplex.cpp"
 
 int main()
 {
@@ -33,7 +38,7 @@ int main()
                      break;
             case 2:  switchEndDevices();
                      break;
-            case  3: cout<<"DARK";
+            case  3: switchHubD();
                      break;
             case 0: break;         
             default: cout<<"Invalid choice";

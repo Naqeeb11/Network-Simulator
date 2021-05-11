@@ -2,6 +2,7 @@ class Switch {
     string  macAddress;
     int nofPort;
     map<int,string> table;
+    map<int,pair<string,vector<string>>> tableComplex;  //Used when network contain Switch, hub and end devices
     bool mappingDone;
     int *connection;
     public:
@@ -25,6 +26,7 @@ class Switch {
 
     void Show()
     {
+        cout<<"\n";
         cout<<"Mac Address: "<<macAddress<<"\n";
         cout<<"No of port: "<<nofPort<<"\n";
         if(mappingDone==true)
@@ -36,5 +38,27 @@ class Switch {
         else
         cout<<"Mapping not done\n";
     }
+
+    void showComplex()
+    {
+        cout<<"\n";
+        cout<<"Mac Address: "<<macAddress<<"\n";
+        cout<<"No of port: "<<nofPort<<"\n";
+        if(mappingDone==true)
+        {
+            cout<<"Port(switch)       Mac Address(HUB)                               Mac Address (Devices): \n";
+            for(int i=1;i<=nofPort;i++)
+            {
+                cout<<"       "<<i<<"                "<<tableComplex[i].first<<"                               ";
+                for(int j=0;j<tableComplex[i].second.size();j++)
+                cout<<"      "<<tableComplex[i].second[j];
+                cout<<"\n";
+            }
+        }
+        else
+        cout<<"Mapping not done\n";
+    }
+
     friend void tableMapping(int ,int,endDevices e[] ,int ,Switch &,string message);
+    friend void tableMappingComplex(int ,int,endDevices e[] ,int ,Switch &,Hub h[],string message);
 };

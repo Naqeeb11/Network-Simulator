@@ -1,25 +1,48 @@
-void switchEndDevices()
+void switchHubD()
 {
     Switch s;
     string l;
     cout<<"Enter MacAddress of Switch : ";
     cin>>l;
     int m;
-    cout<<"no. of port in it: ";
+    cout<<"no. of port in it for connecting hub: ";
     cin>>m;
-    endDevices e[m+1];
+    Hub h[m+1];
 
     s.initialize(l,m,m);
     for(int j=1;j<=m;j++)
     {
         string mac;
         int p;
-        cout<<"enter macAddress of device: ";
+        cout<<"enter macAddress of hub: ";
         cin>>mac;
         cout<<"enter empty port no to which this device will be connected(1-"<<m<<") : ";
         cin>>p;
-        e[p].initialize(p,mac);
+        h[p].initialize(p,mac);
         s.Connection(p,p);
+    }
+
+    int f;
+    cout<<"Total no of end devices needed to connect to hub: ";
+    cin>>f;
+    endDevices e[f+1];
+    int d=0;
+    for(int i=1;i<=m;i++)
+    {
+        int g;
+        cout<<"Enter no of devices needed to connect to hub "<<i<<": ";
+        cin>>g;
+        int j=d+1;
+        for(;j<=d+g;j++)
+        {
+            string mac;
+            cout<<"Enter mac address of device: ";
+            cin>>mac;
+            e[j].initialize(j,mac);
+            e[j].hubConnection(i);
+            h[i].Connections(j);
+        }
+        d=j-1;
     }
 
     int ch=1;
@@ -30,12 +53,12 @@ void switchEndDevices()
         if(ch==1)
         {
             int src,dst;
-            cout<<"Enter src and dest port to send message: ";
+            cout<<"Enter src device no. and dest device no. to send message(1-"<<f<<"): ";
             cin>>src>>dst;
             string message;
             cout<<"Enter Message to sent (length atleast greater than 10): ";
             cin>>message;
-            tableMapping(src,dst,e,m,s,message);
+            tableMappingComplex(src,dst,e,m,s,h,message);
         }
         else if(ch==2)
         {
@@ -49,11 +72,13 @@ void switchEndDevices()
             }
         }
         else if(ch==3)
-            s.Show();
+            s.showComplex();
         else if(ch==4)
         {
-            cout<<"Broadcast Domain: 1\n";
-            cout<<"Collision Domain: "<<m<<"\n"; 
+            cout<<"Broadcast Domain(Switch): 1\n";
+            cout<<"Collision Domain(Switch): "<<m<<"\n\n";
+            cout<<"Broadcast Domain(every Hub): 1\n"; 
+            cout<<"Collision Domain(every Hub): 1\n"; 
         }
     }
 }

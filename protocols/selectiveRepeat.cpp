@@ -58,6 +58,10 @@ void selectiveRepeat(vector<string> messages)
                             sl++,sr++;
                             if(sr<5)
                             q.push(sr);
+                        }
+                        else if(receiverWindow[4]==1)
+                        {
+                            sl++,sr++;
                         }  
                     }
                     q.pop();
