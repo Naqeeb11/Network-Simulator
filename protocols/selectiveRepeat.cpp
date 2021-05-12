@@ -37,6 +37,7 @@ void selectiveRepeat(vector<string> messages)
             {
                 cout<<"Packet "<<q.front()<<" received\n";
                 receiverWindow[q.front()]=1;
+                delay(1000);
                 int y=rand()%4;
                 if(y==1)
                 {
@@ -69,5 +70,6 @@ void selectiveRepeat(vector<string> messages)
             }
             
         }
+        delay(1000);
     }
 }

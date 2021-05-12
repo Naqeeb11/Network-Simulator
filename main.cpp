@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <graphics.h>
 using namespace std;
 
 #include "protocols/accessLayer.cpp"
@@ -35,13 +36,13 @@ int main()
         cin>>ch;
         switch(ch)
         {
-            case 1:  cout<<"RED";
+            case 1:   hub_main();
                      break;
             case 2:  switchEndDevices();
                      break;
             case  3: switchHubD();
                      break;
-            case 0: break;         
+            case 0: break;
             default: cout<<"Invalid choice";
 
         }

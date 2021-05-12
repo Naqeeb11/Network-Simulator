@@ -17,6 +17,7 @@ void stopWait(vector<string> messages)
             else
             {
                 cout<<"Packet "<<sl<<" Received\n";
+                delay(1000);
                 receiverWindow++;
                 int m=rand()%3;
                 if(m==2)
@@ -28,5 +29,6 @@ void stopWait(vector<string> messages)
                 }
             }   
         }
+        delay(1000);
     }
 }

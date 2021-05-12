@@ -14,7 +14,7 @@ void switchHubD()
     {
         string mac;
         int p;
-        cout<<"enter macAddress of hub: ";
+        cout<<"enter macAddress of hub "<<j<<": ";
         cin>>mac;
         cout<<"enter empty port no to which this device will be connected(1-"<<m<<") : ";
         cin>>p;

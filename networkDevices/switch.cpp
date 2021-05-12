@@ -3,14 +3,12 @@ class Switch {
     int nofPort;
     map<int,string> table;
     map<int,pair<string,vector<string>>> tableComplex;  //Used when network contain Switch, hub and end devices
-    bool mappingDone;
     int *connection;
     public:
     void initialize(string macAddr,int port,int size)
     {
         macAddress=macAddr;
         nofPort=port;
-        mappingDone=false;
         connection=new int[size+1];
         for(int i=0;i<size+1;i++)
         connection[i]=0;
@@ -29,14 +27,12 @@ class Switch {
         cout<<"\n";
         cout<<"Mac Address: "<<macAddress<<"\n";
         cout<<"No of port: "<<nofPort<<"\n";
-        if(mappingDone==true)
+        cout<<"Port       Mac Address: \n\n";
+        if(table.size()!=0)
         {
-            cout<<"Port       Mac Address: \n";
-            for(int i=1;i<=nofPort;i++)
-            cout<<i<<"             "<<table[i]<<"\n";
+            for(auto i:table)
+            cout<<i.first<<"             "<<i.second<<"\n\n";
         }
-        else
-        cout<<"Mapping not done\n";
     }
 
     void showComplex()
@@ -44,19 +40,18 @@ class Switch {
         cout<<"\n";
         cout<<"Mac Address: "<<macAddress<<"\n";
         cout<<"No of port: "<<nofPort<<"\n";
-        if(mappingDone==true)
+        cout<<"Port(switch)       Mac Address(HUB)                               Mac Address (Devices): \n\n";
+        if(tableComplex.size()!=0)
         {
-            cout<<"Port(switch)       Mac Address(HUB)                               Mac Address (Devices): \n";
-            for(int i=1;i<=nofPort;i++)
+            for(auto i: tableComplex)
             {
-                cout<<"       "<<i<<"                "<<tableComplex[i].first<<"                               ";
-                for(int j=0;j<tableComplex[i].second.size();j++)
-                cout<<"      "<<tableComplex[i].second[j];
+                cout<<"       "<<i.first<<"                "<<i.second.first<<"                               ";
+                for(int j=0;j<i.second.second.size();j++)
+                cout<<"      "<<i.second.second[j];
                 cout<<"\n";
             }
-        }
-        else
-        cout<<"Mapping not done\n";
+            cout<<"\n";  
+        }          
     }
 
     friend void tableMapping(int ,int,endDevices e[] ,int ,Switch &,string message);

@@ -5,24 +5,30 @@ using namespace std;
 void topology()
 {
 	int gd = DETECT, gm;
-	initgraph(&gd, &gm,"C:\\TC\\BGI");
+  char c[]= "C:\\TC\\BGI" ;
+	initgraph(&gd, &gm,c);
 	   settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/2,60,"AA:AA:AA:EH:0D:AA");
-         outtextxy(getmaxx()/2,75,"HUB");
+     char a[]="AA:AA:AA:EH:0D:AA";
+        outtextxy(getmaxx()/2,60,a);
+        char ed[]="HUB";
+         outtextxy(getmaxx()/2,75,ed);
          settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/10+50,200,"AA:AA:AA:44:A0:AB");
-
+    char b[]="AA:AA:AA:44:A0:AB";
+        outtextxy(getmaxx()/10+50,200,b);
+    char d[]="AA:AA:AA:11:0E:AC";
          settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/10+150,250,"AA:AA:AA:11:0E:AC");
-
+        outtextxy(getmaxx()/10+150,250,d);
+    char e[]="AA:00:1B:AA:AA:AD";
          settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/10+250,300,"AA:00:1B:AA:AA:AD");
-
+        outtextxy(getmaxx()/10+250,300,e);
+    char f[]="B0:11:AA:AA:AA:AE";
+    
          settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/10+350,250,"B0:11:AA:AA:AA:AE");
-
+        outtextxy(getmaxx()/10+350,250,f);
+    char g[]="AA:E1:33:AA:AA:AF";
+  
           settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/10+450,200,"AA:E1:33:AA:AA:AF");
+        outtextxy(getmaxx()/10+450,200,g);
 
        circle(getmaxx()/2,60,60);
        //rectangle(getmaxx()/10,150,getmaxx()/10+100,210);
@@ -41,7 +47,8 @@ void topology()
 
         line(getmaxx()/2-10,110,getmaxx()/10+450,185);
         settextjustify(CENTER_TEXT, CENTER_TEXT);
-        outtextxy(getmaxx()/2,getmaxy()-20,"STAR TOPOLOGY SHOWING HUB AND CONNECTED DEVICES");
+        char er[]="STAR TOPOLOGY SHOWING HUB AND CONNECTED DEVICES";
+        outtextxy(getmaxx()/2,getmaxy()-20,er);
         	getch();
 	closegraph();
 

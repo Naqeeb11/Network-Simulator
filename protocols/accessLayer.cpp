@@ -24,6 +24,7 @@ vector<string> slottedAloha(vector<string> messages)
             q.push(q.front());
             q.pop();
         }
+        delay(1000);
     }
 
     if(q.empty())
