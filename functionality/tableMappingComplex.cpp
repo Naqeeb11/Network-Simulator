@@ -12,8 +12,8 @@ void tableMappingComplex(int src,int dst,endDevices e[],int nport,Switch &s,Hub 
 {
     int hubno=e[src].giveHub();
     int hubno1=e[dst].giveHub();
-    if((s.tableComplex.find(hubno)==s.tableComplex.end() && search(s.tableComplex[hubno].second,e[src].macAddress)) 
-    || (s.tableComplex.find(hubno1)==s.tableComplex.end() && search(s.tableComplex[hubno1].second,e[dst].macAddress)))
+    if((s.tableComplex.find(hubno)==s.tableComplex.end() || search(s.tableComplex[hubno].second,e[src].macAddress)) 
+    || (s.tableComplex.find(hubno1)==s.tableComplex.end() || search(s.tableComplex[hubno1].second,e[dst].macAddress)))
     {
         vector<string> add;
         if(s.tableComplex.find(hubno)==s.tableComplex.end())
