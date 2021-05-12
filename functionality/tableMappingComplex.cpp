@@ -12,8 +12,8 @@ void tableMappingComplex(int src,int dst,endDevices e[],int nport,Switch &s,Hub 
 {
     int hubno=e[src].giveHub();
     int hubno1=e[dst].giveHub();
-    if((s.tableComplex.find(hubno)==s.tableComplex.end() || search(s.tableComplex[hubno].second,e[src].macAddress)) 
-    || (s.tableComplex.find(hubno1)==s.tableComplex.end() || search(s.tableComplex[hubno1].second,e[dst].macAddress)))
+    if((s.tableComplex.find(hubno)==s.tableComplex.end() || search(s.tableComplex[hubno].second,e[src].macAddress)==false) 
+    || (s.tableComplex.find(hubno1)==s.tableComplex.end() || search(s.tableComplex[hubno1].second,e[dst].macAddress)==false))
     {
         vector<string> add;
         if(s.tableComplex.find(hubno)==s.tableComplex.end())
@@ -31,17 +31,17 @@ void tableMappingComplex(int src,int dst,endDevices e[],int nport,Switch &s,Hub 
 
         for(int i=1;i<=nport;i++)
         {
-            if(hubno==i)
-            continue;
-
-            if(i==hubno1 && s.tableComplex.find(hubno1)==s.tableComplex.end())
-            s.tableComplex.insert({hubno1,{h[hubno1].macAddress,add}});
+            if(i==hubno1)
+            {
+                if( s.tableComplex.find(hubno1)==s.tableComplex.end())
+                s.tableComplex.insert({hubno1,{h[hubno1].macAddress,add}});
+            } 
 
             for(int j=0;j<h[i].connections.size();j++)
             {
-               if(h[hubno1].connections[j]==dst && search(s.tableComplex[hubno1].second,e[dst].macAddress)==false)
+               if(h[i].connections[j]==dst && s.tableComplex.find(i)!=s.tableComplex.end() && search(s.tableComplex[i].second,e[dst].macAddress)==false)
                {
-                   s.tableComplex[hubno1].second.push_back(e[dst].macAddress);
+                   s.tableComplex[i].second.push_back(e[dst].macAddress);
                    cout<<"endDevice "<<dst<<" macAddress added in table\n";
                }
             }
