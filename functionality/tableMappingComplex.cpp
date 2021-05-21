@@ -13,7 +13,7 @@ void tableMappingComplex(int src,int dst,endDevices e[],int nport,Switch &s,Hub 
     int hubno=e[src].giveHub();
     int hubno1=e[dst].giveHub();
     if((s.tableComplex.find(hubno)==s.tableComplex.end() || search(s.tableComplex[hubno].second,e[src].macAddress)==false) 
-    || (s.tableComplex.find(hubno1)==s.tableComplex.end() || search(s.tableComplex[hubno1].second,e[dst].macAddress)==false))
+    || (s.tableComplex.find(hubno1)==s.tableComplex.end() || search(s.tableComplex[hubno1].second,e[dst].macAddress)==false ))
     {
         vector<string> add;
         if(s.tableComplex.find(hubno)==s.tableComplex.end())
@@ -59,9 +59,9 @@ void tableMappingComplex(int src,int dst,endDevices e[],int nport,Switch &s,Hub 
             if(h[e[src].giveHub()].connections[i]==src)
             continue;
             if(h[e[src].giveHub()].connections[i]==dst)
-            cout<<"Packet accepted by hub "<<h[e[dst].giveHub()].connections[i]<<"\n";
+            cout<<"Packet accepted by end Device "<<h[e[dst].giveHub()].connections[i]<<"\n";
             else
-            cout<<"Packet dropped by hub "<<h[e[src].giveHub()].connections[i]<<"\n";
+            cout<<"Packet dropped by end Device "<<h[e[src].giveHub()].connections[i]<<"\n";
             delay(500);
         }
     }
@@ -72,16 +72,16 @@ void tableMappingComplex(int src,int dst,endDevices e[],int nport,Switch &s,Hub 
         {
             if(h[e[src].giveHub()].connections[i]==src)
             continue;
-            cout<<"Packet dropped by hub "<<h[e[src].giveHub()].connections[i]<<"\n";
+            cout<<"Packet dropped by end Device "<<h[e[src].giveHub()].connections[i]<<"\n";
             delay(500);
         }
 
         for(int i=0;i<h[e[dst].giveHub()].connections.size();i++)
         {
             if(h[e[dst].giveHub()].connections[i]==dst)
-            cout<<"Packet accepted by hub "<<h[e[dst].giveHub()].connections[i]<<"\n";
+            cout<<"Packet accepted by end Device "<<h[e[dst].giveHub()].connections[i]<<"\n";
             else
-            cout<<"Packet dropped by hub "<<h[e[dst].giveHub()].connections[i]<<"\n";
+            cout<<"Packet dropped by end Device "<<h[e[dst].giveHub()].connections[i]<<"\n";
             delay(500);
         }
     }
